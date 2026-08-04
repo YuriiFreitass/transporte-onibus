@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: transporte-api
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/transporte?createDatabaseIfNotExist=true
+    username: ${ENV_MYSQL_USER}
+    password: ${ENV_MYSQL_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
