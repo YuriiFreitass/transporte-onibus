@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface HorarioRepository extends JpaRepository<HorarioEntity, Long> {
 
-	LocalTime findHorario(LocalTime horario);
-
 	// Encontra o número da linha por horario ascendente. (String numeroLinha somente como parâmetro de busca)
 	List<HorarioEntity> findByNumeroLinhaOrderByHorarioAsc(String numeroLinha);
 }
