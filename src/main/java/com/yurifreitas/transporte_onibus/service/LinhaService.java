@@ -2,6 +2,7 @@ package com.yurifreitas.transporte_onibus.service;
 
 import com.yurifreitas.transporte_onibus.dto.LinhaResponseDto;
 import com.yurifreitas.transporte_onibus.entity.LinhaEntity;
+import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
 import com.yurifreitas.transporte_onibus.mapper.LinhaMapper;
 import com.yurifreitas.transporte_onibus.repository.LinhaRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,7 @@ public class LinhaService {
 		return linhaRepository.findAll(pageable).map(linhaMapper::toResponseDto);
 	}
 
-	public
-
-
+	public Page<LinhaResponseDto> findByTipoTarifa(TipoTarifa tarifa, Pageable pageable) {
+		return linhaRepository.findByTipoTarifa(tarifa, pageable).map(linhaMapper::toResponseDto);
+	}
 }
-
