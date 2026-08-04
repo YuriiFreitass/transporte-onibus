@@ -1,5 +1,6 @@
 package com.yurifreitas.transporte_onibus.entity;
 
+import com.yurifreitas.transporte_onibus.enums.TipoDia;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -16,4 +17,7 @@ public class HorarioEntity {
 	@ManyToOne
 	@JoinColumn(name = "linha_id")
 	private LinhaEntity linha;
+
+	@Enumerated(EnumType.STRING)
+	private TipoDia dia;
 }
