@@ -13,6 +13,8 @@ public class LinhaEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	private String numeroLinha;
+
 	private String nomeLinha;
 
 	@Enumerated(EnumType.STRING)
