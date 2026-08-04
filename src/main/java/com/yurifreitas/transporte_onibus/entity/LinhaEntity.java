@@ -1,5 +1,6 @@
 package com.yurifreitas.transporte_onibus.entity;
 
+import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -14,4 +15,6 @@ public class LinhaEntity {
 
 	private String nomeLinha;
 
+	@Enumerated(EnumType.STRING)
+	private TipoTarifa tarifa;
 }
