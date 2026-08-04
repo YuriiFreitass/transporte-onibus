@@ -22,6 +22,7 @@ public class LinhaService {
 		return linhaRepository.findAll(pageable).map(linhaMapper::toResponseDto);
 	}
 
+	// Lista todas as linhas por tipo de tarifa
 	public Page<LinhaResponseDto> findByTipoTarifa(TipoTarifa tarifa, Pageable pageable) {
 		return linhaRepository.findByTipoTarifa(tarifa, pageable).map(linhaMapper::toResponseDto);
 	}
