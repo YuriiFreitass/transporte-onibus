@@ -2,16 +2,18 @@ package com.yurifreitas.transporte_onibus.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "tb_onibus")
-public class LinhaEntity {
+public class HorarioEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String nomeLinha;
+	private LocalTime horario;
 
+	@ManyToOne
+	@JoinColumn(name = "linha_id")
+	private LinhaEntity linha;
 }
