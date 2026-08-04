@@ -5,7 +5,7 @@ import com.yurifreitas.transporte_onibus.enums.TipoDia;
 import java.time.LocalTime;
 
 public record HorarioResponseDto(
-		Long id,
+		String numeroLinha,
 		LocalTime horario,
 		TipoDia dia
 ) {}
