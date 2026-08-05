@@ -2,11 +2,18 @@ package com.yurifreitas.transporte_onibus.entity;
 
 import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_onibus")
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "tb_linhas")
 public class LinhaEntity {
 
 	@Id
