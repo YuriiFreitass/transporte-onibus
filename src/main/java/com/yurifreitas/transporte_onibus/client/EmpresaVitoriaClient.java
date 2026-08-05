@@ -12,10 +12,18 @@ public class EmpresaVitoriaClient {
 	private static final String BASE_URL =
 			"https://www.evitoria.com.br/linhas-e-horarios/";
 
+	private static final String CATALOGO_URL =
+			"https://www.evitoria.com.br/linhas-e-horarios";
+
 	public Document buscarPagina(String identificadorPagina) {
+		return buscarDocumento(BASE_URL + identificadorPagina);
+	}
 
-		String url = BASE_URL + identificadorPagina;
+	public Document buscarCatalogo() {
+		return buscarDocumento(CATALOGO_URL);
+	}
 
+	private Document buscarDocumento(String url) {
 		try {
 			return Jsoup.connect(url)
 					.userAgent(
@@ -36,7 +44,7 @@ public class EmpresaVitoriaClient {
 
 		} catch (IOException exception) {
 			throw new IllegalStateException(
-					"Não foi possível acessar a página da Empresa Vitória",
+					"Não foi possível acessar a página da Empresa Vitória.",
 					exception
 			);
 		}
