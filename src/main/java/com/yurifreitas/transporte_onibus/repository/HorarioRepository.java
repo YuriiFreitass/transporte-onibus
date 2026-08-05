@@ -10,4 +10,6 @@ public interface HorarioRepository extends JpaRepository<HorarioEntity, Long> {
 
 	// Encontra o número da linha por horario ascendente. (String numeroLinha somente como parâmetro de busca)
 	List<HorarioEntity> findByLinha_NumeroLinhaOrderByHorarioAsc(String numeroLinha);
+
+	void deleteByLinha_NumeroLinha(String numeroLinha);
 }
