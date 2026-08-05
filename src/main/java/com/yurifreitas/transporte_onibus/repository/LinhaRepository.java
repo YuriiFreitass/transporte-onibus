@@ -13,5 +13,5 @@ import java.util.function.Function;
 
 public interface LinhaRepository extends JpaRepository<LinhaEntity, Long> {
 
-	Page<LinhaEntity>findByTipoTarifa(TipoTarifa tarifa,Pageable pageable);
+	Page<LinhaEntity>findByTarifa(TipoTarifa tarifa,Pageable pageable);
 }
