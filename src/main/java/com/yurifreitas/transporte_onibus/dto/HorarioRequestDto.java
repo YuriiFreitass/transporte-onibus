@@ -12,5 +12,8 @@ public record HorarioRequestDto(
 		@NotNull
 		LocalTime horario,
 		@NotNull
-		TipoDia dia
+		TipoDia dia,
+		@NotBlank
+		String localPartida
+
 ) {}

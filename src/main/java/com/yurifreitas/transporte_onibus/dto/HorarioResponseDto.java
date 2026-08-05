@@ -7,5 +7,6 @@ import java.time.LocalTime;
 public record HorarioResponseDto(
 		String numeroLinha,
 		LocalTime horario,
-		TipoDia dia
+		TipoDia dia,
+		String localPartida
 ) {}

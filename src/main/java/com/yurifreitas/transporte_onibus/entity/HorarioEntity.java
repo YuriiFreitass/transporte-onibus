@@ -19,6 +19,9 @@ public class HorarioEntity {
 	@JoinColumn(name = "linha_id")
 	private LinhaEntity linha;
 
+	@Column(nullable = false)
+	private String localPartida;
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private TipoDia dia;
