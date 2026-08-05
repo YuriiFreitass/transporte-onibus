@@ -16,7 +16,7 @@ public class HorarioService {
 	private final HorarioMapper horarioMapper;
 
 	public List<HorarioResponseDto> findByNumeroLinha(String numeroLinha) {
-		return horarioRepository.findByNumeroLinhaOrderByHorarioAsc(numeroLinha)
+		return horarioRepository.findByLinha_NumeroLinhaOrderByHorarioAsc(numeroLinha)
 				.stream()
 				.map(horarioMapper::toResponseDto)
 				.toList();
