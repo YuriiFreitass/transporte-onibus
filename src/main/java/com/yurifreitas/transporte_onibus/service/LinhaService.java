@@ -1,5 +1,6 @@
 package com.yurifreitas.transporte_onibus.service;
 
+import com.yurifreitas.transporte_onibus.dto.LinhaRequestDto;
 import com.yurifreitas.transporte_onibus.dto.LinhaResponseDto;
 import com.yurifreitas.transporte_onibus.entity.LinhaEntity;
 import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
@@ -25,5 +26,18 @@ public class LinhaService {
 	// Lista todas as linhas por tipo de tarifa
 	public Page<LinhaResponseDto> findByTarifa(TipoTarifa tarifa, Pageable pageable) {
 		return linhaRepository.findByTarifa(tarifa, pageable).map(linhaMapper::toResponseDto);
+	}
+
+	public LinhaEntity salvarOuBuscarExistente(
+			LinhaRequestDto requestDto
+	) {
+		return linhaRepository
+				.findByNumeroLinha(requestDto.numeroLinha())
+				.orElseGet(() -> {
+					LinhaEntity linha =
+							linhaMapper.toEntity(requestDto);
+
+					return linhaRepository.save(linha);
+				});
 	}
 }

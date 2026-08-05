@@ -1,29 +1,29 @@
 package com.yurifreitas.transporte_onibus.controller;
 
-import com.yurifreitas.transporte_onibus.client.EmpresaVitoriaClient;
+import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
+import com.yurifreitas.transporte_onibus.service.ImportacaoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
-import org.jsoup.nodes.Document;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/importacoes")
 @RequiredArgsConstructor
 public class ImportacaoController {
 
-	private final EmpresaVitoriaClient empresaVitoriaClient;
+	private final ImportacaoService importacaoService;
 
-	@GetMapping("/teste/{identificadorPagina}")
-	public String testarConexao(
-			@PathVariable String identificadorPagina
+	@PostMapping("/{identificadorPagina}/{tarifa}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void importar(
+			@PathVariable String identificadorPagina,
+			@PathVariable TipoTarifa tarifa
 	) {
-		Document document = empresaVitoriaClient.buscarPagina(identificadorPagina);
+		importacaoService.importar(identificadorPagina, tarifa);
+	}
 
-		return document.title();
+	@PostMapping("/linhas-e-horarios")
+	public int importarCatalogo() {
+		return importacaoService.importarCatalogo();
 	}
 }
