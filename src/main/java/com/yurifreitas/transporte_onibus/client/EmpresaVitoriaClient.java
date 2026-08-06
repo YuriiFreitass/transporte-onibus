@@ -1,5 +1,6 @@
 package com.yurifreitas.transporte_onibus.client;
 
+import com.yurifreitas.transporte_onibus.exception.PaginaEmpresaVitoriaInacessivelException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Component;
@@ -43,9 +44,8 @@ public class EmpresaVitoriaClient {
 					.get();
 
 		} catch (IOException exception) {
-			throw new IllegalStateException(
-					"Não foi possível acessar a página da Empresa Vitória.",
-					exception
+			throw new PaginaEmpresaVitoriaInacessivelException(
+					"Não foi possível acessar a página da Empresa Vitória."
 			);
 		}
 	}
