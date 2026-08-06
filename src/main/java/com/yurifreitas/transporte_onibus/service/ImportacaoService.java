@@ -7,6 +7,7 @@ import com.yurifreitas.transporte_onibus.dto.HorarioRequestDto;
 import com.yurifreitas.transporte_onibus.dto.LinhaRequestDto;
 import com.yurifreitas.transporte_onibus.entity.LinhaEntity;
 import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
+import com.yurifreitas.transporte_onibus.exception.DadosEmpresaVitoriaInvalidosException;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,11 @@ public class ImportacaoService {
 
 		List<LinhaParaImportar> linhas =
 				empresaVitoriaParser.extrairCatalogo(catalogo);
+
+		if (linhas.isEmpty()) {
+			throw new DadosEmpresaVitoriaInvalidosException(
+					"Nenhuma linha foi encontrada no catálogo da Empresa Vitória");
+		}
 
 		for (LinhaParaImportar linha : linhas) {
 			importar(
