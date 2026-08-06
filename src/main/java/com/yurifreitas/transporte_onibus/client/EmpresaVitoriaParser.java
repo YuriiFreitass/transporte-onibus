@@ -4,6 +4,7 @@ import com.yurifreitas.transporte_onibus.dto.HorarioRequestDto;
 import com.yurifreitas.transporte_onibus.dto.LinhaRequestDto;
 import com.yurifreitas.transporte_onibus.enums.TipoDia;
 import com.yurifreitas.transporte_onibus.enums.TipoTarifa;
+import com.yurifreitas.transporte_onibus.exception.DadosEmpresaVitoriaInvalidosException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -28,7 +29,7 @@ public class EmpresaVitoriaParser {
 		Element titulo = document.selectFirst("h3");
 
 		if (titulo == null) {
-			throw new IllegalStateException(
+			throw new DadosEmpresaVitoriaInvalidosException(
 					"Título da linha não encontrado."
 			);
 		}
@@ -38,7 +39,7 @@ public class EmpresaVitoriaParser {
 				.split("\\s+-\\s+", 2);
 
 		if (partes.length != 2) {
-			throw new IllegalStateException(
+			throw new DadosEmpresaVitoriaInvalidosException(
 					"Formato inesperado do título da linha."
 			);
 		}
@@ -159,7 +160,7 @@ public class EmpresaVitoriaParser {
 			case "DOMINGO" ->
 					TipoDia.DOMINGO;
 
-			default -> throw new IllegalStateException(
+			default -> throw new DadosEmpresaVitoriaInvalidosException(
 					"Tipo de dia desconhecido: [" + texto +
 							"] | Normalizado: [" +
 							tipoDiaNormalizado + "]"
@@ -171,7 +172,7 @@ public class EmpresaVitoriaParser {
 		Element link = card.selectFirst("a");
 
 		if (link == null) {
-			throw new IllegalStateException(
+			throw new DadosEmpresaVitoriaInvalidosException(
 					"Link da linha não encontrado."
 			);
 		}
@@ -179,7 +180,7 @@ public class EmpresaVitoriaParser {
 		String href = link.attr("href");
 
 		if (href.isBlank() || !href.contains("/")) {
-			throw new IllegalStateException(
+			throw new DadosEmpresaVitoriaInvalidosException(
 					"Link da linha possui formato inválido: " + href
 			);
 		}
@@ -204,7 +205,7 @@ public class EmpresaVitoriaParser {
 			case "Urbanas Tarifa Zero" ->
 					TipoTarifa.URBANA_ZERO;
 
-			default -> throw new IllegalStateException(
+			default -> throw new DadosEmpresaVitoriaInvalidosException(
 					"Tipo de tarifa inválido: " + tipo
 			);
 		};
