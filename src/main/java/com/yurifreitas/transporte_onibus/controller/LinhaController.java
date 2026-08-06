@@ -23,7 +23,7 @@ public class LinhaController {
 		return linhaService.findAll(pageable);
 	}
 
-	@GetMapping("/tipo-tarifa/{tarifa}")
+	@GetMapping("/tarifa/{tarifa}")
 	public Page<LinhaResponseDto> findByTarifa(@PathVariable TipoTarifa tarifa, Pageable pageable) {
 		return linhaService.findByTarifa(tarifa, pageable);
 	}
