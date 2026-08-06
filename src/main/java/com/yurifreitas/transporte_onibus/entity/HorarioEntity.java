@@ -2,11 +2,13 @@ package com.yurifreitas.transporte_onibus.entity;
 
 import com.yurifreitas.transporte_onibus.enums.TipoDia;
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalTime;
 
 @Entity
+@Getter
 @Setter
 public class HorarioEntity {
 
