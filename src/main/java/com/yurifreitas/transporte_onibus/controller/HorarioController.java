@@ -3,10 +3,8 @@ package com.yurifreitas.transporte_onibus.controller;
 import com.yurifreitas.transporte_onibus.dto.HorarioResponseDto;
 import com.yurifreitas.transporte_onibus.service.HorarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +16,7 @@ public class HorarioController {
 	private final HorarioService horarioService;
 
 	@GetMapping("/linha/{numeroLinha}")
+	@ResponseStatus(HttpStatus.OK)
 	public List<HorarioResponseDto> findByNumeroLinha(@PathVariable String numeroLinha) {
 		return horarioService.findByNumeroLinha(numeroLinha);
 	}
