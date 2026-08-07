@@ -1,4 +1,4 @@
-package com.yurifreitas.transporte_onibus;
+package com.yurifreitas.transporte_onibus.service;
 
 import com.yurifreitas.transporte_onibus.dto.HorarioRequestDto;
 import com.yurifreitas.transporte_onibus.dto.HorarioResponseDto;
@@ -9,7 +9,6 @@ import com.yurifreitas.transporte_onibus.exception.LinhaNaoEncontradaException;
 import com.yurifreitas.transporte_onibus.mapper.HorarioMapper;
 import com.yurifreitas.transporte_onibus.repository.HorarioRepository;
 import com.yurifreitas.transporte_onibus.repository.LinhaRepository;
-import com.yurifreitas.transporte_onibus.service.HorarioService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
