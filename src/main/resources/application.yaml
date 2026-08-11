@@ -1,6 +1,7 @@
 spring:
   application:
     name: transporte-api
+
   config:
     import: optional:file:.env[.properties]
 
@@ -11,10 +12,14 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 
     show-sql: true
 
     properties:
       hibernate:
         format_sql: true
+
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 1
